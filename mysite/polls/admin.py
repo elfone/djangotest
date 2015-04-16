@@ -3,4 +3,10 @@ from polls.models import Poll
 # Register your models here.
 
 
-admin.site.register(Poll)
+class PollAdmin(admin.ModelAdmin):
+    fieldsets = [
+        (None,               {'fields': ['question']}),
+        ('Date information', {'fields': ['pub_date']}),
+    ]
+
+admin.site.register(Poll, PollAdmin)
